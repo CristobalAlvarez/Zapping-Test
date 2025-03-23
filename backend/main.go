@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	filesDirectory := "./hls test/"
+	filesDirectory := "./streaming/"
 
 	db, err := config.InitDB()
 	if err != nil {
@@ -32,12 +32,12 @@ func main() {
 	}))
 
 	// streaming routes
-	router.Static("/hls", filesDirectory)
+	router.Static("/streaming", filesDirectory)
 
 	// user routes
 	userController := controllers.NewUserController(db)
-	router.POST("/users/sign/up", userController.CreateUser)
-	router.POST("/users/login", userController.Login)
+	router.POST("/api/users/signup", userController.CreateUser)
+	router.POST("/api/users/login", userController.Login)
 
 	router.Run(":8080")
 }

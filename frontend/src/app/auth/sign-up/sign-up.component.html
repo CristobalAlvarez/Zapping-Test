@@ -11,9 +11,9 @@
     <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-          Inicia sesión en tu cuenta
+          Crear cuenta
         </h1>
-        <form class="space-y-4 md:space-y-6" [formGroup]="loginForm" (submit)="login()">
+        <form class="space-y-4 md:space-y-6" [formGroup]="signUpForm" (submit)="signUp()">
 
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
@@ -25,21 +25,47 @@
               class="text-red-500 text-sm">
               Debes ingresar un correo electrónico válido.
             </div>
-
-            <div *ngIf="submitted && error" class="text-red-500 text-sm">
-              ¡Ups! Revisa tus credenciales.
-            </div>
           </div>
-
 
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
             <input type="password" name="password" id="password" placeholder="••••••••" formControlName="password"
               class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
               [ngClass]="{ 'border-red-500': submitted && hasError('password', 'required') }">
-            <div *ngIf="submitted && hasError('password', 'required') " class="text-red-500 text-sm">
-              Debes ingresar una contraseña.
+
+            <div class="text-sm mt-1 text-gray-500 inline-flex items-center gap-x-1"
+              [ngClass]="{ 'text-red-500': submitted && hasError('password', 'minlength'), 'text-green-500': submitted && !hasError('password', 'minlength') }">
+
+              <svg *ngIf="submitted && !hasError('password', 'minlength')" class="w-4 h-4" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 11.917 9.724 16.5 19 7.5" />
+              </svg>
+
+              <svg *ngIf="submitted && hasError('password', 'minlength')" class="w-4 h-4" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18 17.94 6M18 18 6.06 6" />
+              </svg>
+
+              La contraseña debe tener al menos 6 caracteres.
             </div>
+          </div>
+
+          <div>
+            <label for="password_again" class="block mb-2 text-sm font-medium text-gray-900">Confirme la
+              contraseña</label>
+            <input type="password" name="password_again" id="password_again" placeholder="••••••••"
+              formControlName="password_again"
+              class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+              [ngClass]="{ 'border-red-500': submitted && hasError('password_again', 'required') }">
+            <div *ngIf="submitted && !checkIfPasswordsAreEqual() " class="text-red-500 text-sm">
+              Las contraseñas no coinciden.
+            </div>
+          </div>
+
+          <div *ngIf="customError === 'unique'" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <span class="font-medium">¡Error!</span> El correo ingresado ya se encuentra registrado.
           </div>
 
           <button type="submit" [disabled]="loading"
@@ -53,11 +79,11 @@
                 d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
                 fill="currentColor" />
             </svg>
-            Iniciar sesión
+            Crear cuenta
           </button>
           <p class="text-sm font-light text-gray-500">
-            ¿No tienes una cuenta? <a routerLink="signup"
-              class="font-medium text-blue-600 hover:underline">Regístrate</a>
+            ¿Ya tienes una cuenta? <a routerLink="login" class="font-medium text-blue-600 hover:underline">Inicia
+              sesión</a>
           </p>
 
         </form>

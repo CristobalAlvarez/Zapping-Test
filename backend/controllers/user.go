@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"example/web-service-gin/config"
 	"example/web-service-gin/models"
 	"net/http"
 
@@ -64,6 +65,12 @@ func (uc *UserController) Login(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Login successful"})
+	token, err := config.GenerateToken(user)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"token": token})
 
 }
