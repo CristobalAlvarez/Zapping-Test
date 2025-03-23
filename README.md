@@ -14,7 +14,9 @@ Avance Domingo 23 de Marzo
 
 - 9:45 - 10:11
 - 11:50 - 13:01
-- 16:06 - 
+- 16:06 - 17:32
+- 17:40 - 18:20
+- 18:25 -
 
 TODO: 
 - Seguridad a ruta  de archivos
@@ -25,6 +27,7 @@ TODO:
     - etc
 - Dockerizar
 - CI/CD
+- Añadir Linter
 - Puntos faltantes del pdf
 - Testing final
 - Hacer instructivo de uso
