@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-index',
@@ -16,7 +17,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('TEST_TOKEN');
     if (token) {
-      this.url = `http://localhost:8080/streaming/segment.m3u8?token=${token}`;
+      this.url = `${environment.backend}/streaming/segment.m3u8?token=${token}`;
     }
   }
 

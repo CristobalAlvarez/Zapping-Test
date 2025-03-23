@@ -17,7 +17,7 @@ Avance Domingo 23 de Marzo
 - 16:06 - 
 
 TODO: 
-- Seguridad a ruta de archivos
+- Seguridad a ruta  de archivos
 - Hacer funcional la ruta de archivos
 - Añadir cositas a la vista de reproductor
     - log out
