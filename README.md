@@ -16,18 +16,17 @@ Avance Domingo 23 de Marzo
 - 11:50 - 13:01
 - 16:06 - 17:32
 - 17:40 - 18:20
-- 18:25 -
+- 18:25 - 18:52
 
 TODO: 
-- Seguridad a ruta  de archivos
-- Hacer funcional la ruta de archivos
+- Añadir Nombre
+- Testing final
+- Hacer instructivo de uso
+
+TODO Extra:
 - Añadir cositas a la vista de reproductor
     - log out
     - usuario actual
     - etc
-- Dockerizar
 - CI/CD
 - Añadir Linter
-- Puntos faltantes del pdf
-- Testing final
-- Hacer instructivo de uso
