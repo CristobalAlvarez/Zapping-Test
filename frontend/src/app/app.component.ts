@@ -16,8 +16,5 @@ export class AppComponent implements OnInit {
     initFlowbite();
   }
 
-  foo(event: any) {
-    console.log(event)
-  }
 
 }
