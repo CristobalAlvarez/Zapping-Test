@@ -32,17 +32,17 @@ func main() {
 		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type"},
 	}))
 
+	// user routes
+	userController := controllers.NewUserController(db)
+	router.POST("/api/users/signup", userController.CreateUser)
+	router.POST("/api/users/login", userController.Login)
+
 	// streaming routes
 	streamingGroup := router.Group("/streaming")
 	streamingGroup.Use(config.AuthMiddleware())
 	{
 		streamingGroup.Static("/", filesDirectory)
 	}
-
-	// user routes
-	userController := controllers.NewUserController(db)
-	router.POST("/api/users/signup", userController.CreateUser)
-	router.POST("/api/users/login", userController.Login)
 
 	// start streaming timer
 	timer.StartStreamingTimer()

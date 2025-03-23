@@ -7,7 +7,7 @@ Avance Jueves 20 de Marzo - 1 Hora
 
 Avance Sábado 22 de Marzo - 1 Hora 20 Minutos
 
-- Se realizó conexión con base de datos y auto migraciones/
+- Se realizó conexión con base de datos y auto migraciones.
 - Se crearon rutas de login y sign up.
 
 Avance Domingo 23 de Marzo
@@ -17,6 +17,7 @@ Avance Domingo 23 de Marzo
 - 16:06 - 17:32
 - 17:40 - 18:20
 - 18:25 - 18:52
+- 19:50 - 
 
 TODO: 
 - Añadir Nombre

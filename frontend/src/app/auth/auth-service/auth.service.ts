@@ -24,8 +24,8 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
-  async signup(email: string, password: string) {
-    return this.http.post(`${environment.backend}/api/users/signup`, { email, password }).toPromise();
+  async signup(name: string, email: string, password: string) {
+    return this.http.post(`${environment.backend}/api/users/signup`, { name, email, password }).toPromise();
   }
 
 }
