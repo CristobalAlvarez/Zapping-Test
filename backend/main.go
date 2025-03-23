@@ -3,6 +3,7 @@ package main
 import (
 	"example/web-service-gin/config"
 	"example/web-service-gin/controllers"
+	"example/web-service-gin/timer"
 	"log"
 
 	"github.com/gin-contrib/cors"
@@ -32,12 +33,19 @@ func main() {
 	}))
 
 	// streaming routes
-	router.Static("/streaming", filesDirectory)
+	streamingGroup := router.Group("/streaming")
+	streamingGroup.Use(config.AuthMiddleware())
+	{
+		streamingGroup.Static("/", filesDirectory)
+	}
 
 	// user routes
 	userController := controllers.NewUserController(db)
 	router.POST("/api/users/signup", userController.CreateUser)
 	router.POST("/api/users/login", userController.Login)
+
+	// start streaming timer
+	timer.StartStreamingTimer()
 
 	router.Run(":8080")
 }

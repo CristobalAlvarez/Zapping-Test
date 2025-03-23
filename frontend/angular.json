@@ -27,12 +27,9 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/video.js/dist/video-js.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "./node_modules/video.js/dist/video.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
