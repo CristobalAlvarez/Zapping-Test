@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 
 	"example/web-service-gin/models"
 
@@ -19,15 +20,29 @@ type DBConfig struct {
 }
 
 func GetDBConfig() *DBConfig {
+	host := getEnv("DB_HOST", "localhost")
+	port := getEnv("DB_PORT", "5432")
+	user := getEnv("DB_USER", "postgres")
+	password := getEnv("DB_PASSWORD", "password")
+	dbName := getEnv("DB_NAME", "streaming_db")
+	sslMode := getEnv("DB_SSLMODE", "disable")
 
 	return &DBConfig{
-		Host:     "localhost",
-		Port:     "5432",
-		User:     "streaming_user",
-		Password: "password",
-		DBName:   "streaming_db",
-		SSLMode:  "disable",
+		Host:     host,
+		Port:     port,
+		User:     user,
+		Password: password,
+		DBName:   dbName,
+		SSLMode:  sslMode,
 	}
+}
+
+func getEnv(key, defaultValue string) string {
+	value := os.Getenv(key)
+	if value == "" {
+		return defaultValue
+	}
+	return value
 }
 
 func InitDB() (*gorm.DB, error) {
