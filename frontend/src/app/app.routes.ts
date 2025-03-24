@@ -1,20 +1,3 @@
-import { Routes } from '@angular/router';
-import { IndexComponent as PlayerIndex } from './player/index/index.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { guardGuard } from './player/guard/guard.guard';
-
-export const routes: Routes = [{
-    path: '',
-    component: LoginComponent
-}, {
-    path: 'signup',
-    component: SignUpComponent
-}, {
-    path: 'player',
-    canActivate: [guardGuard],
-    component: PlayerIndex
-}, {
-    path: '**',
-    redirectTo: ''
-}];
+version https://git-lfs.github.com/spec/v1
+oid sha256:0fff489087d9bfd1be2df139f452a394c8104b1236d6cd668772b0b1fbf5711e
+size 571

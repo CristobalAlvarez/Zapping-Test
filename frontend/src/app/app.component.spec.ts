@@ -1,29 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'frontend' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
-  });
-});
+version https://git-lfs.github.com/spec/v1
+oid sha256:514e7dcfc7ea5018cb1babd36c32e2ad31b404ca550ac73996aacc46a0d3d950
+size 922

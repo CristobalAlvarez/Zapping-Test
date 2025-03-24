@@ -1,17 +1,3 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { unauthorizedInterceptor } from './player/interceptor/http-error.interceptor';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(
-      withInterceptors([
-        unauthorizedInterceptor
-      ])
-    )]
-};
+version https://git-lfs.github.com/spec/v1
+oid sha256:8deedce58dd0af558898a87d89d3e83b092745d9e513c2b13a1f830282c74ed9
+size 578

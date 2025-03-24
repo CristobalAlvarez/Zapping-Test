@@ -1,17 +1,3 @@
-import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
-import { AuthService } from '../../auth/auth-service/auth.service';
-
-export const unauthorizedInterceptor: HttpInterceptorFn = (req, next) => {
-  const authService = inject(AuthService);
-
-  return next(req).pipe(
-    catchError((error: HttpErrorResponse) => {
-      if (error.status >= 400 && error.status < 500) {
-        authService.logout();
-      }
-      return throwError(() => error);
-    })
-  );
-};
+version https://git-lfs.github.com/spec/v1
+oid sha256:8443f52fafb8ffff825a474b8565d684f3352119dddf5371e9463af4720e1a27
+size 569

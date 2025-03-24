@@ -1,17 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
-
-import { guardGuard } from './guard.guard';
-
-describe('guardGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) =>
-    TestBed.runInInjectionContext(() => guardGuard(...guardParameters));
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-  });
-
-  it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
-  });
-});
+version https://git-lfs.github.com/spec/v1
+oid sha256:813216356872c5a401dc7313ae9bf4b24693e4d88ae2477042d65ee1152efe0a
+size 462

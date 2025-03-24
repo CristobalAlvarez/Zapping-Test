@@ -1,14 +1,3 @@
-import { CanActivateFn, Router } from '@angular/router';
-import { inject } from '@angular/core';
-
-export const guardGuard: CanActivateFn = (route, state) => {
-  const router = inject(Router);
-  const token = localStorage.getItem('TEST_TOKEN');
-
-  if (token) {
-    return true;
-  }
-
-  router.navigate(['']);
-  return false;
-};
+version https://git-lfs.github.com/spec/v1
+oid sha256:87d4bf805ebd5adf66973d9301f218889eaad5bae4502a3ce39c331831e4f9a4
+size 325

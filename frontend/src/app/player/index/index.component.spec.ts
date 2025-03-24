@@ -1,28 +1,3 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { IndexComponent } from './index.component';
-
-describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IndexComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+version https://git-lfs.github.com/spec/v1
+oid sha256:e75ded7f9b5fe369fb770378336cd8f94a6a18e8e44ae0037aa7a336889fac82
+size 755

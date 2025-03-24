@@ -1,17 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpInterceptorFn } from '@angular/common/http';
-
-import { unauthorizedInterceptor } from './http-error.interceptor';
-
-describe('httpErrorInterceptor', () => {
-  const interceptor: HttpInterceptorFn = (req, next) =>
-    TestBed.runInInjectionContext(() => unauthorizedInterceptor(req, next));
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-  });
-
-  it('should be created', () => {
-    expect(interceptor).toBeTruthy();
-  });
-});
+version https://git-lfs.github.com/spec/v1
+oid sha256:ac0a2728258e116d895246ba623d932662154554a8491ee292668bbd9a0c200a
+size 502
