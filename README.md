@@ -1,6 +1,6 @@
 # Instrucciones 
 
-Para iniciar el proyecto se debe ejecutar el comando. Los archivos `segmentX.ts` ya se encuentran en la ruta `./backend/streaming/`.
+Para iniciar el proyecto se debe ejecutar el comando en la carpeta raíz del repositorio. Los archivos `segmentX.ts` ya se encuentran en la ruta `./backend/streaming/`.
 
 ```
 docker compose up --build
