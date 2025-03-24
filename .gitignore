@@ -45,5 +45,3 @@ Thumbs.db
 frontend/node_modules
 frontend/.angular
 
-backend/streaming/**.ts
-hls test.zip

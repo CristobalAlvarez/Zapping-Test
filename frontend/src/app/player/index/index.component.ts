@@ -90,7 +90,6 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
       hls.loadSource(this.url);
       hls.attachMedia(video);
       hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-        video.muted = true;
         video.play();
       });
     }
