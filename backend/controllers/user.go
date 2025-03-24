@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"example/web-service-gin/config"
-	"example/web-service-gin/models"
+	"example/zapping-test/config"
+	"example/zapping-test/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -73,4 +73,23 @@ func (uc *UserController) Login(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"token": token})
 
+}
+
+func (uc *UserController) GetCurrentUser(c *gin.Context) {
+
+	userID, exists := c.Get("user_id")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User ID not found"})
+		return
+	}
+
+	var user models.User
+	if err := uc.DB.First(&user, userID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		return
+	}
+
+	user.Password = ""
+
+	c.JSON(http.StatusOK, gin.H{"user": user})
 }

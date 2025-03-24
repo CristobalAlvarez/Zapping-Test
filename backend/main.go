@@ -1,10 +1,11 @@
 package main
 
 import (
-	"example/web-service-gin/config"
-	"example/web-service-gin/controllers"
-	"example/web-service-gin/timer"
+	"example/zapping-test/config"
+	"example/zapping-test/controllers"
+	"example/zapping-test/timer"
 	"log"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -20,17 +21,32 @@ func main() {
 	}
 
 	if err := config.RunMigrations(db); err != nil {
-		log.Fatalf("Error al ejecutar migraciones: %v", err)
+		log.Fatalf("Error running migrations: %v", err)
 	}
 
 	router := gin.Default()
 
 	// config cors
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"*"},
-		AllowMethods: []string{"GET", "POST", "OPTIONS"},
-		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type"},
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
 	}))
+
+	// user routes
+	userController := controllers.NewUserController(db)
+	router.POST("/api/users/signup", userController.CreateUser)
+	router.POST("/api/users/login", userController.Login)
+
+	// protected users route
+	protectedGroup := router.Group("/api/users")
+	protectedGroup.Use(config.AuthMiddleware())
+	{
+		protectedGroup.GET("/me", userController.GetCurrentUser)
+	}
 
 	// streaming routes
 	streamingGroup := router.Group("/streaming")
@@ -38,11 +54,6 @@ func main() {
 	{
 		streamingGroup.Static("/", filesDirectory)
 	}
-
-	// user routes
-	userController := controllers.NewUserController(db)
-	router.POST("/api/users/signup", userController.CreateUser)
-	router.POST("/api/users/login", userController.Login)
 
 	// start streaming timer
 	timer.StartStreamingTimer()

@@ -24,6 +24,7 @@ export class SignUpComponent {
     private router: Router
   ) {
     this.signUpForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       password_again: ['', [Validators.required, Validators.minLength(6)]]
@@ -37,7 +38,7 @@ export class SignUpComponent {
     if (!this.checkIfPasswordsAreEqual()) return;
     this.loading = true;
     this.signUpForm.disable();
-    this.AuthService.signup(this.signUpForm.value.email, this.signUpForm.value.password).then(() => {
+    this.AuthService.signup(this.signUpForm.value.name, this.signUpForm.value.email, this.signUpForm.value.password).then(() => {
       this.submitted = false;
       this.router.navigate(['']);
     }).catch((error) => {
@@ -60,7 +61,6 @@ export class SignUpComponent {
   checkIfPasswordsAreEqual() {
     const password = this.signUpForm.get('password') as FormControl;
     const password_again = this.signUpForm.get('password_again') as FormControl;
-    console.log(password.value, password_again.value);
     return password.value === password_again.value;
   }
 

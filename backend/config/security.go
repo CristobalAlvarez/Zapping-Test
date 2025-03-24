@@ -1,7 +1,8 @@
 package config
 
 import (
-	"example/web-service-gin/models"
+	"example/zapping-test/models"
+	"os"
 	"strings"
 	"time"
 
@@ -17,7 +18,7 @@ type Claims struct {
 	jwt.RegisteredClaims
 }
 
-var jwtSecret = []byte("CLAVE_SECRETA")
+var jwtSecret = []byte(os.Getenv("JWT_SECRET"))
 
 func GenerateToken(user models.User) (string, error) {
 	expirationTime := time.Now().Add(24 * time.Hour)
@@ -55,7 +56,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		}
 
 		if tokenString == "" {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "No se proporcionó token de autenticación"})
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Token is required"})
 			c.Abort()
 			return
 		}
@@ -66,10 +67,12 @@ func AuthMiddleware() gin.HandlerFunc {
 		})
 
 		if err != nil || !token.Valid {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Token inválido o expirado"})
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Token invalid or expired"})
 			c.Abort()
 			return
 		}
+
+		c.Set("user_id", claims.UserID)
 
 		c.Next()
 	}

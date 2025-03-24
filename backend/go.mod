@@ -1,4 +1,4 @@
-module example/web-service-gin
+module example/zapping-test
 
 go 1.24.1
 
