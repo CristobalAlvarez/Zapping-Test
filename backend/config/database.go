@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"example/web-service-gin/models"
+	"example/zapping-test/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

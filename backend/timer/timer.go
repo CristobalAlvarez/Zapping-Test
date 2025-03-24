@@ -25,7 +25,7 @@ func StartStreamingTimer() {
 			content += "#EXT-X-MEDIA-SEQUENCE:" + strconv.Itoa(iteration) + "\n"
 
 			for currentIteration := iteration; currentIteration <= iteration+2; currentIteration++ {
-				content += "#EXTINF:10.000000,\nsegment" + strconv.Itoa(currentIteration) + ".ts\n"
+				content += "#EXTINF:10.000000,\nsegment" + strconv.Itoa(currentIteration%63) + ".ts\n"
 			}
 
 			_, err = file.WriteString(content)

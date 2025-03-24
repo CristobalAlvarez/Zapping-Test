@@ -10,11 +10,10 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
+  title = 'ZappingClone';
 
   ngOnInit(): void {
     initFlowbite();
   }
-
 
 }
