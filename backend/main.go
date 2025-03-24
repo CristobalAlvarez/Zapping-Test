@@ -11,6 +11,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func noCacheMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
+		c.Header("Pragma", "no-cache")
+		c.Header("Expires", "0")
+		c.Next()
+	}
+}
+
 func main() {
 
 	filesDirectory := "./streaming/"
@@ -51,6 +60,7 @@ func main() {
 	// streaming routes
 	streamingGroup := router.Group("/streaming")
 	streamingGroup.Use(config.AuthMiddleware())
+	streamingGroup.Use(noCacheMiddleware())
 	{
 		streamingGroup.Static("/", filesDirectory)
 	}
