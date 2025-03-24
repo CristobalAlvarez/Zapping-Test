@@ -1,4 +1,4 @@
-# Instructivo 
+# Instrucciones 
 
 Para iniciar el proyecto se debe ejecutar el comando
 

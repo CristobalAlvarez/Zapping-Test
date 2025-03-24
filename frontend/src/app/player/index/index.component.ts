@@ -108,7 +108,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
         userId: randomId,
         message: randomMessage
       })
-    }, 3000)
+    }, 6000)
   }
 
   logout() {
