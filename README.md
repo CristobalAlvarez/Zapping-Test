@@ -12,7 +12,7 @@ Este comando iniciará el frontend en la url `http://localhost:4200`, el cual fu
 - `/signup`, para registrarse.
 - `/player`, para ver el reproductor. Esta vista se encuentra protegida por un *Guard*, el cual simplemente revisa si existe un token. Por otro lado, el *interceptor* cierra sesión en caso de que una request responda con código 4XX. De esta manera restringimos esta vista a los usuarios registrados y con sesión iniciada.
 
-Por otro lado, a pesar de que tengo años de experiencia con NodeJS y que era posible desarrollar el backend con este lenguaje, preferí tomar el camino largo y utilizar Golang. Específicamente utilicé Golang con Gin y Gorm como ORM.
+Por otro lado, a pesar de que tengo años de experiencia con NodeJS y que era posible desarrollar el backend con este lenguaje, preferí utilizar Golang para familiarizarme con él, conocer su sintaxis y su funcionamiento. Específicamente utilicé Golang con Gin y Gorm como ORM.
 
 # Avances y desarrollo
 
